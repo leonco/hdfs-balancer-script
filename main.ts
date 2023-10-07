@@ -1,4 +1,4 @@
-import $ from "https://deno.land/x/dax/mod.ts"
+import $ from "https://deno.land/x/dax@0.35.0/mod.ts"
 
 if(import.meta.main){
   const nodeName = Deno.args[0]
@@ -42,7 +42,7 @@ async function getPlanStatus(nodeName: string): Promise<string> {
   const result = await $`hdfs diskbalancer -query ${nodeName}`.text();
   const lines = result.split("\n")
   const status = lines[2]
-  return status.substr('Result: '.length)
+  return status.substring('Result: '.length)
 }
 
 
